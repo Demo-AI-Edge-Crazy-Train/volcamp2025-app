@@ -130,7 +130,7 @@ commands:
       workingDir: "/"
 events:
   postStart:
-  - install-maven
-  - install-python-requirements
-  - install-node-requirements
+  # - install-maven
+
+
 
