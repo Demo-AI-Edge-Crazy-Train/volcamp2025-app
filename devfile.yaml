@@ -119,14 +119,14 @@ commands:
   - id: install-python-requirements
     exec:
       commandLine: |
-        cd /projects/crazy-train/intelligent-train &&  pip install -r src/requirements.txt && 
+        cd /projects/crazy-train/intelligent-train &&  pip install -r src/requirements.txt 
       component: tools
       env: []
       workingDir: "/"
   - id: install-node-requirements
     exec:
       commandLine: |
-       cd /projects/crazy-train/train-controller && npm install 2>/dev/null
+       cd /projects/crazy-train/train-controller && npm install 
       component: tools
       env: []
       workingDir: "/"
