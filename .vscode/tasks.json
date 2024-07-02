@@ -4,35 +4,40 @@
         {
             "label": "start-capture",
             "type": "shell",
-            "command": "mvn quarkus:dev -f /projects/crazy-train/capture-app/pom.xml",
+            "command": "mvn quarkus:dev -f $PROJECT_SOURCE/capture-app/pom.xml",
             "isBackground": true,
             "problemMatcher": []
         },
         {
             "label": "start-intelligent-train",
             "type": "shell",
-            "command": "cd /projects/crazy-train/intelligent-train && python app.py",
+            "command": "cd $PROJECT_SOURCE/intelligent-train && python src/app.py",
             "isBackground": true,
             "problemMatcher": []
         },
         {
             "label": "start-train-ceq",
             "type": "shell",
-            "command": "mvn quarkus:dev -f /projects/crazy-train/train-ceq-app/pom.xml",
+            "command": "mvn quarkus:dev -f $PROJECT_SOURCE/train-ceq-app/pom.xml",
             "isBackground": true,
             "problemMatcher": []
         },
         {
             "label": "start-train-controller",
             "type": "shell",
-            "command": "node /projects/crazy-train/train-controller/app.js",
+            "command": "node $PROJECT_SOURCE/train-controller/index.js",
             "isBackground": true,
-            "problemMatcher": []
+            "problemMatcher": [],
+            "options": {
+                "env": {
+                    "LEGO_BACKEND": "mock"
+                }
+            }
         },
         {
             "label": "start-train-monitoring",
             "type": "shell",
-            "command": "mvn quarkus:dev -f /projects/crazy-train/monitoring-app/pom.xml",
+            "command": "mvn quarkus:dev -f $PROJECT_SOURCE/monitoring-app/pom.xml",
             "isBackground": true,
             "problemMatcher": []
         },
