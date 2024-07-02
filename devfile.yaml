@@ -119,7 +119,7 @@ commands:
   - id: install-python-requirements
     exec:
       commandLine: |
-        cd /projects/crazy-train/intelligent-train && pip install pip install -r src/requirements.txt && 
+        cd /projects/crazy-train/intelligent-train &&  pip install -r src/requirements.txt && 
       component: tools
       env: []
       workingDir: "/"
