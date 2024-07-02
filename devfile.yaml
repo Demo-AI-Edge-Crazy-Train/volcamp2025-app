@@ -101,8 +101,8 @@ components:
           value: "localhost:2181"
         - name: KAFKA_GROUP_MAX_SESSION_TIMEOUT_MS
           value: "600000"
-        # - name: KAFKA_REPLICATION_FACTOR
-        #   value: "1"
+        - name: KAFKA_REPLICATION_FACTOR
+          value: "1"
       endpoints:
         - name: kafka-port
           targetPort: 9092
