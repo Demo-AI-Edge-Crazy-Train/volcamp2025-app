@@ -4,7 +4,7 @@
         {
             "label": "start-capture",
             "type": "shell",
-            "command": "mvn quarkus:dev -f train-capture-image-app/capture-app/pom.xml",
+            "command": "mvn quarkus:dev -f capture-app/pom.xml",
             "isBackground": true,
             "problemMatcher": []
         },
@@ -32,7 +32,7 @@
         {
             "label": "start-train-monitoring",
             "type": "shell",
-            "command": "mvn quarkus:dev -f train-monitoring-app/monitoring-app/pom.xml",
+            "command": "mvn quarkus:dev -f monitoring-app/pom.xml",
             "isBackground": true,
             "problemMatcher": []
         },
