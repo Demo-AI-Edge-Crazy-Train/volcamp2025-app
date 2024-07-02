@@ -136,20 +136,20 @@ commands:
   - id: install-python-requirements
     exec:
       commandLine: |
-        cd /projects/intelligent-train && pip install -r src/requirements.txt
+        cd intelligent-train && pip install -r src/requirements.txt
       component: tools
       env: []
       workingDir: "/"
   - id: install-node-requirements
     exec:
       commandLine: |
-       cd /projects/train-controller && npm install 2>/dev/null
+       cd train-controller && npm install 2>/dev/null
       component: tools
       env: []
       workingDir: "/"
 events:
   postStart:
   - install-maven
-  - install-python-requirements
-  - install-node-requirements
+  # - install-python-requirements
+  # - install-node-requirements
 
