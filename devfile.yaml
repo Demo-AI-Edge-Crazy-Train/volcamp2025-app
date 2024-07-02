@@ -104,19 +104,6 @@ components:
       endpoints:
         - name: kafka-port
           targetPort: 9092
-  # - name: kafdrop
-  #   container:
-  #     image: obsidiandynamics/kafdrop
-  #     memoryLimit: 1Gi
-  #     env:
-  #       - name: KAFKA_BROKERCONNECT
-  #         value: "kafka:29092"
-  #       - name: JVM_OPTS
-  #         value: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
-  #     endpoints:
-  #       - name: kafdrop-port
-  #         targetPort: 9000  
-
 commands:
   - id: install-maven
     exec:
