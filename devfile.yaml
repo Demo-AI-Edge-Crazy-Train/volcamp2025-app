@@ -18,6 +18,10 @@ components:
           name: debug
           protocol: tcp
           targetPort: 5005
+        - exposure: public
+          name: monitoring-svc
+          protocol: tcp
+          targetPort: 8086
       env:
         - name: QUARKUS_HTTP_HOST
           value: 0.0.0.0
