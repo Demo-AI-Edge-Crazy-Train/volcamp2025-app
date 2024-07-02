@@ -26,9 +26,9 @@ components:
         - name: QUARKUS_HTTP_HOST
           value: 0.0.0.0
         - name: CHE_DASHBOARD_URL
-          value: 'https://devspaces.apps.cluster-5f8lw.dynamic.redhatworkshops.io/dashboard'
+          value: 'https://devspaces.apps.riviera-dev-2024.sandbox2830.opentlc.com/dashboard'
         - name: CHE_PLUGIN_REGISTRY_URL
-          value: 'https://devspaces.apps.cluster-5f8lw.dynamic.redhatworkshops.io/plugin-registry/v3'
+          value: 'https://devspaces.apps.riviera-dev-2024.sandbox2830.opentlc.com/plugin-registry/v3'
         - name: CHE_PLUGIN_REGISTRY_INTERNAL_URL
           value: 'http://plugin-registry.openshift-devspaces.svc:8080/v3'
         - name: OPENVSX_REGISTRY_URL
@@ -123,14 +123,14 @@ commands:
   - id: install-python-requirements
     exec:
       commandLine: |
-        cd /projects/crazy-train/intelligent-train &&  pip install -r src/requirements.txt 
+        cd /projects/rivieradev-app/intelligent-train &&  pip install -r src/requirements.txt 
       component: tools
       env: []
       workingDir: "/"
   - id: install-node-requirements
     exec:
       commandLine: |
-       cd /projects/crazy-train/train-controller && npm install 
+       cd /projects/rivieradev-app/train-controller && npm install 
       component: tools
       env: []
       workingDir: "/"
