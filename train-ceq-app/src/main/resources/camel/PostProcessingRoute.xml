@@ -1,0 +1,27 @@
+<routes xmlns="http://camel.apache.org/schema/spring">
+    <route id="postproscesing-route">  
+        <from uri="paho:{{train.mqtt.source.topicName}}?brokerUrl={{train.mqtt.brokerUrl}}"/>     
+        <log loggingLevel="DEBUG" message="MQTT message received:"/>
+        <log loggingLevel="DEBUG" message="${body}"/>
+        <setHeader name="origin"><simple>${body}</simple></setHeader>
+        <setHeader name="id"><jsonpath>$.id</jsonpath></setHeader>
+        <log message="Id of the message: ${header.id}"/>
+        <unmarshal> <json library="Jackson" unmarshalType="org.redhat.demo.crazytrain.model.Result"/></unmarshal>
+        <log message="unmarshalling done"/>
+        <process ref="CommandProcessor"/>
+        <log message="Train Command: ${body}"/>
+        <toD uri="paho:{{command.mqtt.destination.topicName}}?brokerUrl={{train.mqtt.brokerUrl}}"/>
+        <setBody><simple>${header.origin}</simple></setBody>
+        <convertBodyTo type="java.lang.String"/>
+        <log loggingLevel="DEBUG" message="generating cloud event ${body}"/>
+        <process ref="CloudEventProcessor"/>
+        <log  loggingLevel="DEBUG" message="${body}"/>
+        <toD uri="kafka:{{monitoring.kafka.destination.topicName}}?brokers={{train.kafka.brokerUrl}}"/>
+        <log loggingLevel="DEBUG" message="written into kafka"/>
+    </route>
+    <route id="command-capture-image">
+        <from uri="kafka:{{monitoring.kafka.source.topicName}}?brokers={{train.kafka.brokerUrl}}"/>
+        <setHeader name="command"><jsonpath>$.command</jsonpath></setHeader>
+        <toD uri="{{train.http.url}}/${header.command}?httpMethod=POST" />
+    </route>
+</routes>

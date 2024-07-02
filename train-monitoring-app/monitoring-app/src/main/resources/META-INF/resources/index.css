@@ -1,0 +1,174 @@
+@font-face {
+    font-family: RedHat-bold;
+    src: url('fonts/RedHatText-Bold.woff2') format('woff2');
+  }
+html, body {margin: 0; height: 100%; overflow: hidden}
+html {
+    background-color: white;
+    background-image: url('background.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'RedHat-bold', Fallback, sans-serif;
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
+#header {
+    color: black;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 0;
+}
+#header h1 {
+    font-weight: normal;
+    text-align: center;
+    color: white;
+    margin-top: 50px
+}
+#frame-container {
+    height: fit-content;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: #00000057;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#image-frame img {
+    box-shadow: 0 0 80px 30px #ffffff59;
+    border-radius: 10px;
+}
+#stream-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+}
+
+#commands{
+    width: 100%;
+    position: absolute;
+    bottom: -150px;
+}
+#button-frame {
+    display:flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+}
+#button-frame > div {
+    margin: 25px 50px;
+}
+
+button {
+    font-family: "RedHat-bold";
+}
+/* CSS */
+.button-82-pushable {
+position: relative;
+border: none;
+background: transparent;
+padding: 0;
+cursor: pointer;
+outline-offset: 4px;
+transition: filter 250ms;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+}
+
+.button-82-shadow {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border-radius: 12px;
+background: hsl(0deg 0% 0% / 0.25);
+will-change: transform;
+transform: translateY(2px);
+transition:
+transform
+600ms
+cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-82-edge {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border-radius: 12px;
+background-color: black;
+}
+
+.button-82-front {
+display: block;
+position: relative;
+padding: 12px 27px;
+border-radius: 12px;
+font-size: 1.1rem;
+color: white;
+background: #a60000;
+will-change: transform;
+transform: translateY(-4px);
+transition:
+transform
+600ms
+cubic-bezier(.3, .7, .4, 1);
+}
+
+@media (min-width: 768px) {
+.button-82-front {
+font-size: 1.25rem;
+padding: 12px 42px;
+}
+}
+
+.button-82-pushable:hover {
+filter: brightness(110%);
+-webkit-filter: brightness(110%);
+}
+
+.button-82-pushable:hover .button-82-front {
+transform: translateY(-6px);
+transition:
+transform
+250ms
+cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-front {
+transform: translateY(-2px);
+transition: transform 34ms;
+}
+
+.button-82-pushable:hover .button-82-shadow {
+transform: translateY(4px);
+transition:
+transform
+250ms
+cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-shadow {
+transform: translateY(1px);
+transition: transform 34ms;
+}
+
+.button-82-pushable:focus:not(:focus-visible) {
+outline: none;
+}

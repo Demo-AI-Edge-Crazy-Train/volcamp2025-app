@@ -1,0 +1,34 @@
+{
+  "name": "train-controller",
+  "version": "1.0.0",
+  "description": "Lego train controller",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Demo-AI-Edge-Crazy-Train/intelligent-train.git"
+  },
+  "keywords": [
+    "Lego",
+    "train",
+    "controller",
+    "bluetooth",
+    "mqtt",
+    "grpc",
+    "rest"
+  ],
+  "author": "Mourad Ouachani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Demo-AI-Edge-Crazy-Train/intelligent-train/issues"
+  },
+  "homepage": "https://github.com/Demo-AI-Edge-Crazy-Train/intelligent-train#readme",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.10.0",
+    "@grpc/proto-loader": "^0.7.10",
+    "async": "^3.2.5",
+    "index.js": "^0.0.3",
+    "mqtt": "^5.3.5",
+    "node-poweredup": "Demo-AI-Edge-Crazy-Train/node-poweredup#noble-fork"
+  }
+}
