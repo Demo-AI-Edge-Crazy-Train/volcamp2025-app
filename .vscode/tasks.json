@@ -1,51 +1,51 @@
 {
     "version": "2.0.0",
     "tasks": [
-        // {
-        //     "label": "start-capture",
-        //     "type": "shell",
-        //     "command": "mvn quarkus:dev -f train-capture-image-app/capture-app/pom.xml",
-        //     "isBackground": true,
-        //     "problemMatcher": []
-        // },
-        // {
-        //     "label": "start-intelligent-train",
-        //     "type": "shell",
-        //     "command": "cd intelligent-train && python app.py",
-        //     "isBackground": true,
-        //     "problemMatcher": []
-        // },
-        // {
-        //     "label": "start-train-ceq",
-        //     "type": "shell",
-        //     "command": "mvn quarkus:dev -f train-ceq-app/pom.xml",
-        //     "isBackground": true,
-        //     "problemMatcher": []
-        // },
-        // {
-        //     "label": "start-train-controller",
-        //     "type": "shell",
-        //     "command": "node train-controller/app.js",
-        //     "isBackground": true,
-        //     "problemMatcher": []
-        // },
-        // {
-        //     "label": "start-train-monitoring",
-        //     "type": "shell",
-        //     "command": "mvn quarkus:dev -f train-monitoring-app/monitoring-app/pom.xml",
-        //     "isBackground": true,
-        //     "problemMatcher": []
-        // },
-        // {
-        //     "label": "start-all-apps",
-        //     "dependsOn": [
-        //         "start-capture",
-        //         "start-intelligent-train",
-        //         "start-train-ceq",
-        //         "start-train-controller",
-        //         "start-train-monitoring"
-        //     ],
-        //     "dependsOrder": "sequence"
-        // }
+        {
+            "label": "start-capture",
+            "type": "shell",
+            "command": "mvn quarkus:dev -f train-capture-image-app/capture-app/pom.xml",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "start-intelligent-train",
+            "type": "shell",
+            "command": "cd intelligent-train && python app.py",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "start-train-ceq",
+            "type": "shell",
+            "command": "mvn quarkus:dev -f train-ceq-app/pom.xml",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "start-train-controller",
+            "type": "shell",
+            "command": "node train-controller/app.js",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "start-train-monitoring",
+            "type": "shell",
+            "command": "mvn quarkus:dev -f train-monitoring-app/monitoring-app/pom.xml",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "start-all-apps",
+            "dependsOn": [
+                "start-capture",
+                "start-intelligent-train",
+                "start-train-ceq",
+                "start-train-controller",
+                "start-train-monitoring"
+            ],
+            "dependsOrder": "sequence"
+        }
     ]
 }
