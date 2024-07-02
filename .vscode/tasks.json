@@ -4,35 +4,35 @@
         {
             "label": "start-capture",
             "type": "shell",
-            "command": "mvn quarkus:dev -f /projects/train-capture-image-app/capture-app/pom.xml",
+            "command": "mvn quarkus:dev -f train-capture-image-app/capture-app/pom.xml",
             "isBackground": true,
             "problemMatcher": []
         },
         {
             "label": "start-intelligent-train",
             "type": "shell",
-            "command": "cd /projects/to/intelligent-train && python app.py",
+            "command": "cd intelligent-train && python app.py",
             "isBackground": true,
             "problemMatcher": []
         },
         {
             "label": "start-train-ceq",
             "type": "shell",
-            "command": "mvn quarkus:dev -f /projects/train-ceq-app/pom.xml",
+            "command": "mvn quarkus:dev -f train-ceq-app/pom.xml",
             "isBackground": true,
             "problemMatcher": []
         },
         {
             "label": "start-train-controller",
             "type": "shell",
-            "command": "node /projects/train-controller/app.js",
+            "command": "node train-controller/app.js",
             "isBackground": true,
             "problemMatcher": []
         },
         {
             "label": "start-train-monitoring",
             "type": "shell",
-            "command": "mvn quarkus:dev -f /projects/train-monitoring-app/monitoring-app/pom.xml",
+            "command": "mvn quarkus:dev -f train-monitoring-app/monitoring-app/pom.xml",
             "isBackground": true,
             "problemMatcher": []
         },
