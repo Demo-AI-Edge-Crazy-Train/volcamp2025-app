@@ -1,0 +1,33 @@
+####
+# This Dockerfile is used in order to build a container that runs the Quarkus application with OpenCV
+#
+# Before building the container image run:
+#
+# ./mvnw package
+#
+# Then, build the image with:
+#
+# podman build -f src/main/docker/Dockerfile.opencv -t quarkus/train-capture-image-jvm .
+#
+# Then run the container (as root) using:
+#
+# podman save quarkus/train-capture-image-jvm | sudo podman load
+# sudo podman run -i --rm -p 8080:8080 --privileged -v /dev:/dev quarkus/train-capture-image-jvm
+#
+####
+FROM quay.io/demo-ai-edge-crazy-train/openjdk-opencv:17-4.8.1
+
+# We make four distinct layers so if there are application changes the library layers can be re-used
+COPY --chown=185 target/quarkus-app/lib/ /deployments/lib/
+COPY --chown=185 target/quarkus-app/*.jar /deployments/
+COPY --chown=185 target/quarkus-app/app/ /deployments/app/
+COPY --chown=185 target/quarkus-app/quarkus/ /deployments/quarkus/
+
+EXPOSE 8080
+ENV JAVA_OPTS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager" \
+    OPENCV_LOG_LEVEL=debug \
+    OPENCV_VIDEOIO_DEBUG=1  \
+    LD_LIBRARY_PATH=/usr/lib/java \
+    JAVA_APP_JAR="/deployments/quarkus-run.jar"
+
+ENTRYPOINT [ "/opt/jboss/container/java/run/run-java.sh" ]
