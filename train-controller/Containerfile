@@ -7,7 +7,8 @@ RUN dnf update -y \
  && mkdir /opt/app
 
 WORKDIR /opt/app
-COPY src *.js package*.json .
+COPY src src
+COPY *.js package*.json .
 
 RUN npm install \
  && chmod -R go+rwX .
