@@ -1,0 +1,51 @@
+{{- if .Values.components.intelligentTrain.createPipelineRun -}}
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  generateName: intelligent-train-
+spec:
+  pipelineRef:
+    name: buildah-aarch64
+  params:
+  - name: git-url
+    value: {{ include "gitUrl" (dict "Values" .Values "name" "intelligentTrain") | quote }}
+  - name: git-revision
+    value: {{ include "gitRevision" (dict "Values" .Values "name" "intelligentTrain") | quote }}
+  - name: image-name
+    value: {{ include "image" (dict "Values" .Values "name" "intelligentTrain") | quote }}
+  - name: context-dir
+    value: {{ include "gitContextDir" (dict "Values" .Values "name" "intelligentTrain") | quote }}
+  - name: containerfile-path
+    value: docker/Dockerfile
+  workspaces:
+  - name: oci-images
+    volumeClaimTemplate:
+      spec:
+        storageClassName: {{ .Values.tektonPipelines.workspaces.storageClassName | quote }}
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
+            storage: 10Gi
+  - name: source-workspace
+    volumeClaimTemplate:
+      spec:
+        storageClassName: {{ .Values.tektonPipelines.workspaces.storageClassName | quote }}
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
+            storage: 1Gi
+{{ include "imageRegistryWorkspace" (dict "Values" .Values "name" "intelligentTrain") | nindent 2 }}
+  taskRunSpecs:
+  - pipelineTaskName: build-aarch64
+    podTemplate:
+      tolerations:
+      - key: "rivieradev2024-crazytrain.netlify.app/arm64-architecture"
+        operator: "Exists"
+        effect: "NoSchedule"
+      nodeSelector:
+        beta.kubernetes.io/arch: arm64
+  taskRunTemplate:
+    serviceAccountName: buildbot
+{{- end -}}

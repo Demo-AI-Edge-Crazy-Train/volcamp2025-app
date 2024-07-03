@@ -1,0 +1,69 @@
+{{- if .Values.components.captureApp.createPipelineRun -}}
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  generateName: capture-app-
+spec:
+  pipelineRef:
+    name: quarkus-multiarch
+  params:
+  - name: git-url
+    value: {{ include "gitUrl" (dict "Values" .Values "name" "captureApp") | quote }}
+  - name: git-revision
+    value: {{ include "gitRevision" (dict "Values" .Values "name" "captureApp") | quote }}
+  - name: image-name
+    value: {{ include "image" (dict "Values" .Values "name" "captureApp") | quote }}
+  - name: context-dir
+    value: {{ include "gitContextDir" (dict "Values" .Values "name" "captureApp") | quote }}
+  - name: containerfile-path
+    value: src/main/docker/Dockerfile.opencv
+  workspaces:
+  - name: oci-images
+    volumeClaimTemplate:
+      spec:
+        storageClassName: {{ .Values.tektonPipelines.workspaces.storageClassName | quote }}
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
+            storage: 10Gi
+  - name: sources
+    volumeClaimTemplate:
+      spec:
+        storageClassName: {{ .Values.tektonPipelines.workspaces.storageClassName | quote }}
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
+            storage: 1Gi
+  - name: maven-settings
+    emptyDir: {}
+{{ include "imageRegistryWorkspace" (dict "Values" .Values "name" "captureApp") | nindent 2 }}
+  taskRunSpecs:
+  - pipelineTaskName: maven-package-x86-64
+    podTemplate:
+      nodeSelector:
+        beta.kubernetes.io/arch: amd64
+  - pipelineTaskName: maven-package-aarch64
+    podTemplate:
+      tolerations:
+      - key: "rivieradev2024-crazytrain.netlify.app/arm64-architecture"
+        operator: "Exists"
+        effect: "NoSchedule"
+      nodeSelector:
+        beta.kubernetes.io/arch: arm64
+  - pipelineTaskName: build-x86-64
+    podTemplate:
+      nodeSelector:
+        beta.kubernetes.io/arch: amd64
+  - pipelineTaskName: build-aarch64
+    podTemplate:
+      tolerations:
+      - key: "rivieradev2024-crazytrain.netlify.app/arm64-architecture"
+        operator: "Exists"
+        effect: "NoSchedule"
+      nodeSelector:
+        beta.kubernetes.io/arch: arm64
+  taskRunTemplate:
+    serviceAccountName: buildbot
+{{- end -}}
