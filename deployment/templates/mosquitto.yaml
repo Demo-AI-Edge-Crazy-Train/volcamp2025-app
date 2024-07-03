@@ -1,0 +1,104 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mosquitto-config
+data:
+  mosquitto.conf: |
+    user mosquitto
+    persistence true
+    persistence_location /mosquitto/data/
+    listener 1883 0.0.0.0
+    protocol mqtt
+    allow_anonymous true
+    log_dest file /mosquitto/log/mosquitto.log
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mosquitto-data
+spec:
+  storageClassName: gp3-csi
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mosquitto
+    app.kubernetes.io/component: mosquitto
+    app.kubernetes.io/instance: mosquitto
+    app.kubernetes.io/name: mosquitto
+    app.kubernetes.io/part-of: train
+  name: mosquitto
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: mosquitto
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mosquitto
+        deployment: mosquitto
+    spec:
+      containers:
+      - image: {{ include "image" (dict "Values" .Values "name" "mosquitto") | quote }}
+        imagePullPolicy: {{ include "imagePullPolicy" (dict "Values" .Values "name" "mosquitto") | quote }}
+        name: mosquitto
+        ports:
+        - containerPort: 1883
+          protocol: TCP
+        - containerPort: 9001
+          protocol: TCP
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - name: data
+          mountPath: /mosquitto/data
+        - name: config
+          mountPath: /mosquitto/config
+        - name: logs
+          mountPath: /mosquitto/log
+      volumes:
+      - name: logs
+        emptyDir: {}
+      - name: config
+        configMap:
+          name: mosquitto-config
+      - name: data
+        persistentVolumeClaim:
+          claimName: mosquitto-data
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      serviceAccountName: train
+      serviceAccount: train
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mosquitto
+    app.kubernetes.io/component: mosquitto
+    app.kubernetes.io/instance: mosquitto
+    app.kubernetes.io/name: mosquitto
+    app.kubernetes.io/part-of: train
+  name: mosquitto
+spec:
+  ports:
+  - name: mqtt
+    port: 1883
+  - name: websockets
+    port: 9001
+  selector:
+    app: mosquitto
+    deployment: mosquitto
