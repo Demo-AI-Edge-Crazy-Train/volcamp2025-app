@@ -1,0 +1,55 @@
+{{- if .Values.components.trainController.createPipelineRun -}}
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+  generateName: train-controller-
+spec:
+  pipelineRef:
+    name: buildah-multiarch
+  params:
+  - name: git-url
+    value: {{ include "gitUrl" (dict "Values" .Values "name" "trainController") | quote }}
+  - name: git-revision
+    value: {{ include "gitRevision" (dict "Values" .Values "name" "trainController") | quote }}
+  - name: image-name
+    value: {{ include "image" (dict "Values" .Values "name" "trainController") | quote }}
+  - name: context-dir
+    value: {{ include "gitContextDir" (dict "Values" .Values "name" "trainController") | quote }}
+  workspaces:
+  - name: oci-images
+    volumeClaimTemplate:
+      spec:
+        storageClassName: {{ .Values.tektonPipelines.workspaces.storageClassName | quote }}
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
+            storage: 10Gi
+  - name: source-workspace
+    volumeClaimTemplate:
+      spec:
+        storageClassName: {{ .Values.tektonPipelines.workspaces.storageClassName | quote }}
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
+            storage: 1Gi
+{{ include "imageRegistryWorkspace" (dict "Values" .Values "name" "trainController") | nindent 2 }}
+  taskRunSpecs:
+  - pipelineTaskName: build-x86-64
+    podTemplate:
+      nodeSelector:
+        beta.kubernetes.io/arch: amd64
+  - pipelineTaskName: build-aarch64
+    podTemplate:
+      tolerations:
+      - key: "rivieradev2024-crazytrain.netlify.app/arm64-architecture"
+        operator: "Exists"
+        effect: "NoSchedule"
+      nodeSelector:
+        beta.kubernetes.io/arch: arm64
+  taskRunTemplate:
+    serviceAccountName: buildbot
+{{- end -}}

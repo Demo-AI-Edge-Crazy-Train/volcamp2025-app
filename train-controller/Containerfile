@@ -7,6 +7,7 @@ RUN dnf update -y \
  && mkdir /opt/app
 
 WORKDIR /opt/app
+COPY src src
 COPY *.js package*.json .
 
 RUN npm install \

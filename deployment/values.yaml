@@ -1,0 +1,37 @@
+namespace: test
+components:
+  intelligentTrain:
+    image:
+      #name: quay.io/demo-ai-edge-crazy-train/intelligent-train
+      #pullPolicy: IfNotPresent
+      tag: latest
+  captureApp:
+    image:
+      #name: quay.io/demo-ai-edge-crazy-train/train-capture-image-app
+      #pullPolicy: IfNotPresent
+      tag: latest
+  monitoringApp:
+    image:
+      #name: quay.io/demo-ai-edge-crazy-train/train-monitoring-app
+      #pullPolicy: IfNotPresent
+      tag: latest
+  ceqApp:
+    image:
+      #name: quay.io/demo-ai-edge-crazy-train/train-ceq-app
+      #pullPolicy: IfNotPresent
+      tag: latest
+  trainController:
+    image:
+      #name: quay.io/demo-ai-edge-crazy-train/train-controller
+      #pullPolicy: IfNotPresent
+      tag: latest
+  mosquitto:
+    image:
+      name: docker.io/library/eclipse-mosquitto
+      #pullPolicy: IfNotPresent
+      tag: latest
+  strimzi:
+    image:
+      name: quay.io/strimzi/kafka
+      pullPolicy: IfNotPresent
+      tag: latest-kafka-3.4.0
