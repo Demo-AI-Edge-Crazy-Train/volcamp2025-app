@@ -67,11 +67,10 @@ public class ScheduledCapture {
     @ConfigProperty(name = "capture.videoDeviceIndex")
     int videoDeviceIndex;
 
-    @ConfigProperty(name = "capture.mock")
-    boolean mock;
+    /* add mock config property here */
 
-    @ConfigProperty(name = "capture.videoPath")
-    String videoPath;
+    /* add videoPath config property here */
+
 
     @ConfigProperty(name = "capture.videoPeriodicCapture")
     int videoPeriodicCapture;

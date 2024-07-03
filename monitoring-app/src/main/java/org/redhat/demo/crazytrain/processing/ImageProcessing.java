@@ -55,7 +55,7 @@ public class ImageProcessing {
             .register(registry);
     }
 
-  @Incoming("train-monitoring")
+  /* add the annotation here */
   public void process(String result) {
     LOGGER.debug("Consumer kafka recived  : "+result);
     long start = System.nanoTime();
@@ -66,19 +66,6 @@ public class ImageProcessing {
           jsonNode = mapper.readTree(result);
           JsonNode data = jsonNode.get("data");
           String imageBytesBase64  = data.get("image").asText();
-          //Save the image to the file system (asynchronously)
-          //  if(saveImage){
-          //   long timestamp = System.currentTimeMillis();
-          //   String filepath = tmpFolder+"/" + timestamp + ".jpg";
-          //   Mat image = new Mat(480, 640, CvType.CV_8UC3);
-          //   saveService.saveImageAsync(image, filepath).thenAccept(success -> {
-          //           if (success) {
-          //               LOGGER.debug("Image saved successfully");
-          //           } else {
-          //               LOGGER.error("Failed to save image");
-          //           }
-          //       });
-          //  }
             broadcastProcessor.onNext(imageBytesBase64);
             long end = System.nanoTime();
             timer.record(end - start, TimeUnit.NANOSECONDS);
