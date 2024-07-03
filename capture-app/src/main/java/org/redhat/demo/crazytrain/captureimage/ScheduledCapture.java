@@ -37,14 +37,11 @@ import io.vertx.mutiny.core.Vertx;
 public class ScheduledCapture {
     private  VideoCapture camera; 
 
-    @Inject
-    ImageCaptureService imageCaptureService;
 
-    @Inject
-    ImageService imageService;
+    /* add mock config property here */
 
-    @Inject
-    Vertx vertx;
+    /* add videoPath config property here */
+
     // interval in milliseconds
     @ConfigProperty(name = "capture.interval")
     int interval;
@@ -67,13 +64,19 @@ public class ScheduledCapture {
     @ConfigProperty(name = "capture.videoDeviceIndex")
     int videoDeviceIndex;
 
-    /* add mock config property here */
-
-    /* add videoPath config property here */
-
-
     @ConfigProperty(name = "capture.videoPeriodicCapture")
     int videoPeriodicCapture;
+
+    
+    @Inject
+    ImageCaptureService imageCaptureService;
+
+    @Inject
+    ImageService imageService;
+
+    @Inject
+    Vertx vertx;
+    
 
     MqttPublisher mqttPublisher = null;
 
