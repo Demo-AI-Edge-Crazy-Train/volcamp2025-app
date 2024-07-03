@@ -3,7 +3,7 @@
         <from uri="paho:{{train.mqtt.source.topicName}}?brokerUrl={{train.mqtt.brokerUrl}}"/>     
         <log loggingLevel="DEBUG" message="MQTT message received:"/>
         <log loggingLevel="DEBUG" message="${body}"/>
-        <setHeader name="origin"><simple>${body}</simple></setHeader>
+        <!-- add setHeader here -->
         <setHeader name="id"><jsonpath>$.id</jsonpath></setHeader>
         <log message="Id of the message: ${header.id}"/>
         <unmarshal> <json library="Jackson" unmarshalType="org.redhat.demo.crazytrain.model.Result"/></unmarshal>
@@ -11,7 +11,7 @@
         <process ref="CommandProcessor"/>
         <log message="Train Command: ${body}"/>
         <toD uri="paho:{{command.mqtt.destination.topicName}}?brokerUrl={{train.mqtt.brokerUrl}}"/>
-        <setBody><simple>${header.origin}</simple></setBody>
+        <!-- add setBody here -->
         <convertBodyTo type="java.lang.String"/>
         <log loggingLevel="DEBUG" message="generating cloud event ${body}"/>
         <process ref="CloudEventProcessor"/>
