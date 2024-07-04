@@ -2,6 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: buildah-multiarch
+  namespace: {{ .Values.namespace }}
 spec:
 
   workspaces:
@@ -91,6 +92,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: buildah-aarch64
+  namespace: {{ .Values.namespace }}
 spec:
 
   workspaces:

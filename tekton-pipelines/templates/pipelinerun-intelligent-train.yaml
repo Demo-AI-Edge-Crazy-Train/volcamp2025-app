@@ -3,6 +3,7 @@ apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
   generateName: intelligent-train-
+  namespace: {{ .Values.namespace }}
 spec:
   pipelineRef:
     name: buildah-aarch64

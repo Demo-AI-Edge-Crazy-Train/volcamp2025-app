@@ -2,6 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: buildah-push
+  namespace: {{ .Values.namespace }}
 spec:
   params:
   - name: image-name
