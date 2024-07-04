@@ -83,6 +83,8 @@ public class ScheduledCapture {
     private Long timerId;
 
     private volatile boolean stopRequested = false;
+   
+
     private Thread testThread;
 
 
@@ -91,6 +93,14 @@ public class ScheduledCapture {
 
     private static final Logger LOGGER = Logger.getLogger(ScheduledCapture.class);
     Util util = null;
+
+    public boolean isStopRequested() {
+        return stopRequested;
+    }
+
+    public void setStopRequested(boolean stopRequested) {
+        this.stopRequested = stopRequested;
+    }
     // Start the camera when the application starts and set the resolution
     void onStart(@Observes StartupEvent ev) {
         Logger.getLogger(ScheduledCapture.class).info("The application is starting...");
@@ -241,7 +251,7 @@ public class ScheduledCapture {
         LOGGER.info("Stop requested");
         if (testThread != null) {
             try {
-                testThread.join(); // Wait for the testThread to finish
+                testThread.interrupt(); // Wait for the testThread to finish
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt(); // Restore interrupted status
             }
