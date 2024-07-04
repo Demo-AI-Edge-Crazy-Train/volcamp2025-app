@@ -34,7 +34,7 @@ import io.vertx.mutiny.core.Vertx;
 
 @ApplicationScoped
 @Path("/capture")
-public class ScheduledCapture {
+public class ScheduledCapture{
     private  VideoCapture camera; 
 
 
@@ -83,13 +83,8 @@ public class ScheduledCapture {
     private Long timerId;
 
     private volatile boolean stopRequested = false;
-   
 
     private Thread testThread;
-
-
-
-
 
     private static final Logger LOGGER = Logger.getLogger(ScheduledCapture.class);
     Util util = null;
@@ -108,8 +103,6 @@ public class ScheduledCapture {
             camera = new VideoCapture(videoDeviceIndex); 
             camera.set(Videoio.CAP_PROP_FRAME_WIDTH, 640); // Max resolution for Logitech C505
             camera.set(Videoio.CAP_PROP_FRAME_HEIGHT, 480); // Max resolution for Logitech C505
-            //camera.set(Videoio.CAP_PROP_AUTOFOCUS, 0); // Try to disable autofocus
-            //camera.set(Videoio.CAP_PROP_FOCUS, 255); // Try to disable autofocus
             camera.set(Videoio.CAP_PROP_EXPOSURE, 15); // Try to set exposure
         }
         util = new Util();
@@ -251,22 +244,12 @@ public class ScheduledCapture {
         LOGGER.info("Stop requested");
         if (testThread != null) {
             try {
-                testThread.interrupt(); // Wait for the testThread to finish
+                testThread.join(); // Wait for the testThread to finish
+                testThread = null;
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt(); // Restore interrupted status
             }
-            testThread = null;
         }
         return Response.ok("Stop requested").build();       
-        // if (timerId == null) {
-        //     return Response.status(Response.Status.BAD_REQUEST).entity("Capture is not running").build();
-        // }else if(timerId != null){
-        //     vertx.cancelTimer(timerId);
-        //     timerId = null;
-        // }
-        // imageCaptureService.releaseCamera(this.camera);
-        // LOGGER.info("Camera released");
-        // mqttPublisher.disconnect();
-        // LOGGER.info("MQTT disconnected");
     }
 }
