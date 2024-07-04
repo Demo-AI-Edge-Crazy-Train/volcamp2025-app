@@ -5,7 +5,7 @@ metadata:
 components:
   - name: tools
     container:
-      image: "image-registry.openshift-image-registry.svc:5000/openshift/universal-developer-image:latest"
+      image: "image-registry.openshift-image-registry.svc:5000/openshift/universal-developer-image:opencv"
       args: ['tail', '-f', '/dev/null']
       memoryLimit: 8G
       memoryRequest: 256Mi
