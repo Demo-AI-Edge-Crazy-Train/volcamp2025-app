@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: train-controller-env
+  namespace: {{ .Values.namespace }}
 data:
   LEGO_BACKEND: mock
   DEBUG: main,lego-gear-mock
@@ -22,6 +23,7 @@ metadata:
     app.kubernetes.io/name: train-controller
     app.kubernetes.io/part-of: train
   name: train-controller
+  namespace: {{ .Values.namespace }}
 spec:
   progressDeadlineSeconds: 600
   replicas: 1

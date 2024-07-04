@@ -12,6 +12,7 @@ metadata:
     app.openshift.io/runtime: quarkus
     app.openshift.io/runtime-namespace: monitoring-app
   name: monitoring-app
+  namespace: {{ .Values.namespace }}
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -68,6 +69,7 @@ metadata:
     app.kubernetes.io/part-of: monitoring-app
     app.openshift.io/runtime-version: latest
   name: monitoring-app
+  namespace: {{ .Values.namespace }}
 spec:
   ports:
   - name: 8080-tcp
@@ -89,6 +91,7 @@ metadata:
     app.kubernetes.io/part-of: monitoring-app
     app.openshift.io/runtime-version: latest
   name: monitoring-app
+  namespace: {{ .Values.namespace }}
 spec:
   port:
     targetPort: 8080-tcp

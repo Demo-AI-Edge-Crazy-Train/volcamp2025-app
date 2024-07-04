@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mosquitto-config
+  namespace: {{ .Values.namespace }}
 data:
   mosquitto.conf: |
     user mosquitto
@@ -16,6 +17,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mosquitto-data
+  namespace: {{ .Values.namespace }}
 spec:
   storageClassName: gp3-csi
   accessModes:
@@ -34,6 +36,7 @@ metadata:
     app.kubernetes.io/name: mosquitto
     app.kubernetes.io/part-of: train
   name: mosquitto
+  namespace: {{ .Values.namespace }}
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -93,6 +96,7 @@ metadata:
     app.kubernetes.io/name: mosquitto
     app.kubernetes.io/part-of: train
   name: mosquitto
+  namespace: {{ .Values.namespace }}
 spec:
   ports:
   - name: mqtt
