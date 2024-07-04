@@ -38,6 +38,28 @@
       </snapshots>
     </repository>
   </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>  
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>public</id>
+      <url>https://nexus-secure-route-nexus.apps.riviera-dev-2024.sandbox2830.opentlc.com/repository/public</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>  
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
   <dependencyManagement>
     <dependencies>
       <dependency>
