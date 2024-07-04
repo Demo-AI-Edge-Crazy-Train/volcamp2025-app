@@ -5,7 +5,7 @@ metadata:
 components:
   - name: tools
     container:
-      image: "quay.io/demo-ai-edge-crazy-train/universal-developer-image:opencv"
+      image: "image-registry.openshift-image-registry.svc:5000/openshift/universal-developer-image:latest"
       args: ['tail', '-f', '/dev/null']
       memoryLimit: 8G
       memoryRequest: 256Mi
@@ -39,6 +39,7 @@ components:
           value: /home/user/.m2
         - name: HOME
           value: /home/user
+
   - name: m2
     volume:
       size: 3Gi
