@@ -2,33 +2,33 @@ namespace: test
 components:
   intelligentTrain:
     image:
-      #name: quay.io/demo-ai-edge-crazy-train/intelligent-train
-      #pullPolicy: IfNotPresent
+      name: quay.io/riviera-dev-2024/intelligent-train
+      pullPolicy: Always
       tag: latest
   captureApp:
     image:
-      #name: quay.io/demo-ai-edge-crazy-train/train-capture-image-app
-      #pullPolicy: IfNotPresent
+      name: quay.io/riviera-dev-2024/train-capture-image-app
+      pullPolicy: Always
       tag: latest
   monitoringApp:
     image:
-      #name: quay.io/demo-ai-edge-crazy-train/train-monitoring-app
-      #pullPolicy: IfNotPresent
+      name: quay.io/riviera-dev-2024/train-monitoring-app
+      pullPolicy: Always
       tag: latest
   ceqApp:
     image:
-      #name: quay.io/demo-ai-edge-crazy-train/train-ceq-app
-      #pullPolicy: IfNotPresent
+      name: quay.io/riviera-dev-2024/train-ceq-app
+      pullPolicy: Always
       tag: latest
   trainController:
     image:
-      #name: quay.io/demo-ai-edge-crazy-train/train-controller
-      #pullPolicy: IfNotPresent
+      name: quay.io/riviera-dev-2024/train-controller
+      pullPolicy: Always
       tag: latest
   mosquitto:
     image:
       name: docker.io/library/eclipse-mosquitto
-      #pullPolicy: IfNotPresent
+      pullPolicy: Always
       tag: latest
   strimzi:
     image:
