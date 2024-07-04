@@ -7,27 +7,27 @@ components:
     git:
       url: https://github.com/Demo-AI-Edge-Crazy-Train/rivieradev-app.git
       contextDir: intelligent-train
-      revision: solution
+      revision: main
     image:
       #name: quay.io/demo-ai-edge-crazy-train/intelligent-train
       #secretName: quay-authentication
       tag: latest
-    createPipelineRun: false
+    createPipelineRun: true
   captureApp:
     git:
       url: https://github.com/Demo-AI-Edge-Crazy-Train/rivieradev-app.git
       contextDir: capture-app
-      revision: solution
+      revision: main
     image:
       #name: quay.io/demo-ai-edge-crazy-train/train-capture-image-app
       #secretName: quay-authentication
       tag: latest
-    createPipelineRun: false
+    createPipelineRun: true
   monitoringApp:
     git:
       url: https://github.com/Demo-AI-Edge-Crazy-Train/rivieradev-app.git
       contextDir: monitoring-app
-      revision: solution
+      revision: main
     image:
       #name: quay.io/demo-ai-edge-crazy-train/train-monitoring-app
       #secretName: quay-authentication
@@ -37,19 +37,19 @@ components:
     git:
       url: https://github.com/Demo-AI-Edge-Crazy-Train/rivieradev-app.git
       contextDir: train-ceq-app
-      revision: solution
+      revision: main
     image:
       #name: quay.io/demo-ai-edge-crazy-train/train-ceq-app
       #secretName: quay-authentication
       tag: latest
-    createPipelineRun: false
+    createPipelineRun: true
   trainController:
     git:
       url: https://github.com/Demo-AI-Edge-Crazy-Train/rivieradev-app.git
       contextDir: train-controller
-      revision: solution
+      revision: main
     image:
       #name: quay.io/demo-ai-edge-crazy-train/train-controller
       #secretName: quay-authentication
       tag: latest
-    createPipelineRun: false
+    createPipelineRun: true
