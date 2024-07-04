@@ -32,7 +32,7 @@ components:
       #name: quay.io/demo-ai-edge-crazy-train/train-monitoring-app
       #secretName: quay-authentication
       tag: latest
-    createPipelineRun: true
+    createPipelineRun: false
   ceqApp:
     git:
       url: https://github.com/Demo-AI-Edge-Crazy-Train/rivieradev-app.git
@@ -52,4 +52,4 @@ components:
       #name: quay.io/demo-ai-edge-crazy-train/train-controller
       #secretName: quay-authentication
       tag: latest
-    createPipelineRun: true
+    createPipelineRun: false
