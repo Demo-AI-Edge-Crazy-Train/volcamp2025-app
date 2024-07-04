@@ -30,7 +30,13 @@
     </repository>
     <repository>
       <id>public</id>
-      <url>http://nexus-route-nexus.apps.riviera-dev-2024.sandbox2830.opentlc.com/repository/public/</url>
+      <url>https://nexus-secure-route-nexus.apps.riviera-dev-2024.sandbox2830.opentlc.com/repository/public</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>  
+      </snapshots>
     </repository>
   </repositories>
   <dependencyManagement>
