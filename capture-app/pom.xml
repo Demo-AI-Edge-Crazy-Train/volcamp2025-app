@@ -34,6 +34,12 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  <repositories>
+    <repository>
+      <id>public</id>
+      <url>http://nexus-route-nexus.apps.riviera-dev-2024.sandbox2830.opentlc.com/repository/public/</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>io.quarkus</groupId>

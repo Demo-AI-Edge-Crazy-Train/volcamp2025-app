@@ -17,6 +17,12 @@
     <skipTests>true</skipTests>
     <surefire-plugin.version>3.2.5</surefire-plugin.version>
   </properties>
+  <repositories>
+    <repository>
+      <id>public</id>
+      <url>http://nexus-route-nexus.apps.riviera-dev-2024.sandbox2830.opentlc.com/repository/public/</url>
+    </repository>
+  </repositories>
   <dependencyManagement>
     <dependencies>
       <dependency>
