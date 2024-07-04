@@ -3,6 +3,7 @@ apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
   generateName: capture-app-
+  namespace: {{ .Values.namespace }}
 spec:
   pipelineRef:
     name: quarkus-multiarch

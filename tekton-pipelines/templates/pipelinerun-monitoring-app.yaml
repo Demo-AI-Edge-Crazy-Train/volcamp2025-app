@@ -2,9 +2,8 @@
 apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: Prune=false
   generateName: monitoring-app-
+  namespace: {{ .Values.namespace }}
 spec:
   pipelineRef:
     name: quarkus-multiarch

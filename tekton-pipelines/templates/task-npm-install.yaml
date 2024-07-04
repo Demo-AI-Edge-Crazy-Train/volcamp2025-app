@@ -2,6 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: npm-install
+  namespace: {{ .Values.namespace }}
 spec:
   params:
   - name: context-dir
