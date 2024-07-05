@@ -1,3 +1,4 @@
+{{- if not .Values.runPipelines -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -5,3 +6,4 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
 {{ (.Files.Glob "files/maven/*").AsConfig | indent 2 }}
+{{- end -}}

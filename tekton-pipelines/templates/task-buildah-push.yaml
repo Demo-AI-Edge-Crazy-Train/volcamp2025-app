@@ -1,3 +1,4 @@
+{{- if not .Values.runPipelines -}}
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
@@ -68,3 +69,4 @@ spec:
     volumeMounts:
     - name: container-storage
       mountPath: /var/lib/containers
+{{- end -}}

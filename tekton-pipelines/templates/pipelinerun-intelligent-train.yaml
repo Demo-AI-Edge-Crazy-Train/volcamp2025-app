@@ -1,4 +1,4 @@
-{{- if .Values.components.intelligentTrain.createPipelineRun -}}
+{{- if and .Values.runPipelines .Values.components.intelligentTrain.createPipelineRun -}}
 apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:

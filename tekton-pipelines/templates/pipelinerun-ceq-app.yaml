@@ -1,4 +1,4 @@
-{{- if .Values.components.ceqApp.createPipelineRun -}}
+{{- if and .Values.runPipelines .Values.components.ceqApp.createPipelineRun -}}
 apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
