@@ -9,6 +9,7 @@ data:
   MQTT_TOPIC: "train-image"
   MQTT_PUB_TOPIC: "train-model-result"
   MODEL_PATH: models/model.onnx
+  MIN_CONF_THRESHOLD: "0.6"
 ---
 apiVersion: apps/v1
 kind: Deployment

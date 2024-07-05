@@ -4,7 +4,7 @@ metadata:
   name: capture-app-env
   namespace: {{ .Values.namespace }}
 data:
-  VIDEO_PATH: "/deployments/data/track-stop-and-slowdown.avi"
+  VIDEO_PATH: "/deployments/data/track-christmas-tree.avi"
   TMP_FOLDER: "/tmp"
   INTERVAL: "100"
   PERIODIC_CAPTURE: "100"

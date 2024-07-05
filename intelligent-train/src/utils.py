@@ -9,7 +9,7 @@ CLASSES = {
   1: "DangerAhead"
 }
 colors = np.random.uniform(0, 255, size=(len(CLASSES), 3))
-MIN_CONF_THRESHOLD = float(os.environ.get("MIN_CONF_THRESHOLD", 0.8))
+MIN_CONF_THRESHOLD = float(os.environ.get("MIN_CONF_THRESHOLD", 0.6))
 
 def preprocess(original_image):
     # original_image: np.ndarray = cv2.imread(image_path)
