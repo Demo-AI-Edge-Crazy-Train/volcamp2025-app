@@ -126,14 +126,14 @@ commands:
   - id: install-python-requirements
     exec:
       commandLine: |
-        cd /projects/rivieradev-app/intelligent-train &&  pip install -r src/requirements.txt 
+        cd /projects/opentour2024-app/intelligent-train &&  pip install -r src/requirements.txt 
       component: tools
       env: []
       workingDir: "/"
   - id: install-node-requirements
     exec:
       commandLine: |
-       cd /projects/rivieradev-app/train-controller && npm install 
+       cd /projects/opentour2024-app/train-controller && npm install 
       component: tools
       env: []
       workingDir: "/"
