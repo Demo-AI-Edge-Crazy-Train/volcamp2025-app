@@ -40,7 +40,7 @@ components:
         - name: HOME
           value: /home/user
         - name: KUBEDOCK_ENABLED
-          value: "true"
+          value: "false"
 
   - name: m2
     volume:
