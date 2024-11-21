@@ -61,7 +61,7 @@ spec:
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 30
       tolerations:
-      - key: "rivieradev2024-crazytrain.netlify.app/arm64-architecture"
+      - key: "emea-open-demo.redhat.com/arm64-architecture"
         operator: "Exists"
         effect: "NoSchedule"
       nodeSelector:
