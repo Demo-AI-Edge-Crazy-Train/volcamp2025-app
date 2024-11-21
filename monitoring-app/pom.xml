@@ -19,7 +19,7 @@
   <repositories>
     <repository>
       <id>central</id>
-      <url>http://nxrm-ha-maven-repository.nexus.svc.cluster.local:8081/repository/maven-public</url>
+      <url>https://repo.maven.apache.org/maven2/</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -28,8 +28,8 @@
       </snapshots>
     </repository>
     <repository>
-      <id>public</id>
-      <url>http://nxrm-ha-maven-repository.nexus.svc.cluster.local:8081/repository/redhat</url>
+      <id>redhat</id>
+      <url>https://maven.repository.redhat.com/ga/</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -41,7 +41,7 @@
   <pluginRepositories>
     <pluginRepository>
       <id>central</id>
-      <url>http://nxrm-ha-maven-repository.nexus.svc.cluster.local:8081/repository/maven-public</url>
+      <url>https://repo.maven.apache.org/maven2/</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -50,8 +50,8 @@
       </snapshots>
     </pluginRepository>
     <pluginRepository>
-      <id>public</id>
-      <url>http://nxrm-ha-maven-repository.nexus.svc.cluster.local:8081/repository/redhat</url>
+      <id>redhat</id>
+      <url>https://maven.repository.redhat.com/ga/</url>
       <releases>
         <enabled>true</enabled>
       </releases>
