@@ -4,13 +4,13 @@
             <id>release-http-unblocker</id>
             <mirrorOf>central</mirrorOf>
             <name></name>
-            <url>http://nxrm-ha-maven-repository.nexus.svc.cluster.local:8081/repository/central</url>
+            <url>http://nxrm-ha-maven-repository.nexus.svc.cluster.local/repository/central</url>
         </mirror>
         <mirror>
             <id>snapshot-http-unblocker</id>
             <mirrorOf>redhat</mirrorOf>
             <name></name>
-            <url>http://nxrm-ha-maven-repository.nexus.svc.cluster.local:8081/repository/redhat</url>
+            <url>http://nxrm-ha-maven-repository.nexus.svc.cluster.local/repository/redhat</url>
         </mirror>
     </mirrors>
 </settings>
