@@ -19,17 +19,17 @@
   <repositories>
     <repository>
       <id>central</id>
-      <url>https://repo.maven.apache.org/maven2</url>
+      <url>https://nexus-secure-route-nexus.apps.riviera-dev-2024.sandbox2830.opentlc.com/repository/public</url>
       <releases>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
       </releases>
       <snapshots>
-        <enabled>false</enabled>  
+        <enabled>true</enabled>  
       </snapshots>
     </repository>
     <repository>
       <id>public</id>
-      <url>https://nexus-secure-route-nexus.apps.riviera-dev-2024.sandbox2830.opentlc.com/repository/public</url>
+      <url>http://nxrm-ha-maven-repository.nexus.svc.cluster.local:8081/repository/redhat</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -41,17 +41,17 @@
   <pluginRepositories>
     <pluginRepository>
       <id>central</id>
-      <url>https://repo.maven.apache.org/maven2</url>
+      <url>https://nexus-secure-route-nexus.apps.riviera-dev-2024.sandbox2830.opentlc.com/repository/public</url>
       <releases>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
       </releases>
       <snapshots>
-        <enabled>false</enabled>  
+        <enabled>true</enabled>  
       </snapshots>
     </pluginRepository>
     <pluginRepository>
       <id>public</id>
-      <url>https://nexus-secure-route-nexus.apps.riviera-dev-2024.sandbox2830.opentlc.com/repository/public</url>
+      <url>http://nxrm-ha-maven-repository.nexus.svc.cluster.local:8081/repository/redhat</url>
       <releases>
         <enabled>true</enabled>
       </releases>
