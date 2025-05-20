@@ -61,7 +61,7 @@ spec:
   - name: maven-package-x86-64
     runAfter: ["clone-repo-x86-64"]
     taskRef:
-      kind: ClusterTask
+      kind: Task
       name: maven
     params:
     - name: CONTEXT_DIR
@@ -76,7 +76,7 @@ spec:
   - name: maven-package-aarch64
     runAfter: ["clone-repo-aarch64"]
     taskRef:
-      kind: ClusterTask
+      kind: Task
       name: maven
     params:
     - name: CONTEXT_DIR
