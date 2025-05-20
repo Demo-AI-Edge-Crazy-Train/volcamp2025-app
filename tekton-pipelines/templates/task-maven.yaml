@@ -29,7 +29,7 @@ spec:
     - name: MAVEN_IMAGE
       type: string
       description: Maven base image
-      default: docker.io/library/maven:3.9-eclipse-temurin-17-alpine
+      default: registry.redhat.io/amq-streams/maven-builder-rhel9:2.9.0
     - name: GOALS
       description: maven goals to run
       type: array
