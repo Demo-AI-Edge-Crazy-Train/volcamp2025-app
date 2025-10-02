@@ -34,6 +34,7 @@ spec:
     taskRef:
       kind: Task
       name: git-clone
+      apiVersion: tekton.dev/v1beta1
     params:
     - name: url
       value: $(params.git-url)
@@ -48,6 +49,7 @@ spec:
     taskRef:
       kind: Task
       name: git-clone
+      apiVersion: tekton.dev/v1beta1
     params:
     - name: url
       value: $(params.git-url)
@@ -63,6 +65,7 @@ spec:
     taskRef:
       kind: Task
       name: maven
+      apiVersion: tekton.dev/v1
     params:
     - name: CONTEXT_DIR
       value: $(params.context-dir)
@@ -78,6 +81,7 @@ spec:
     taskRef:
       kind: Task
       name: maven
+      apiVersion: tekton.dev/v1
     params:
     - name: CONTEXT_DIR
       value: $(params.context-dir)
@@ -91,7 +95,9 @@ spec:
   - name: build-x86-64
     runAfter: ["maven-package-x86-64"]
     taskRef:
+      kind: Task
       name: buildah-build
+      apiVersion: tekton.dev/v1beta1
     params:
     - name: context-dir
       value: $(params.context-dir)
@@ -107,7 +113,9 @@ spec:
   - name: build-aarch64
     runAfter: ["maven-package-aarch64"]
     taskRef:
+      kind: Task
       name: buildah-build
+      apiVersion: tekton.dev/v1beta1
     params:
     - name: context-dir
       value: $(params.context-dir)
@@ -123,7 +131,9 @@ spec:
   - name: push-image
     runAfter: ["build-x86-64", "build-aarch64"]
     taskRef:
+      kind: Task
       name: buildah-push
+      apiVersion: tekton.dev/v1beta1
     params:
     - name: image-name
       value: $(params.image-name)

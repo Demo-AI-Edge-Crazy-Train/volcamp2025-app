@@ -33,6 +33,7 @@ spec:
     taskRef:
       kind: Task
       name: git-clone
+      apiVersion: tekton.dev/v1beta1
     params:
     - name: url
       value: $(params.git-url)
@@ -47,6 +48,7 @@ spec:
     taskRef:
       kind: Task
       name: git-clone
+      apiVersion: tekton.dev/v1beta1
     params:
     - name: url
       value: $(params.git-url)
@@ -60,7 +62,9 @@ spec:
   - name: npm-install-x86-64
     runAfter: ["clone-repo-x86-64"]
     taskRef:
+      kind: Task
       name: npm-install
+      apiVersion: tekton.dev/v1beta1
     params:
     - name: context-dir
       value: $(params.context-dir)
@@ -72,7 +76,9 @@ spec:
   - name: npm-install-aarch64
     runAfter: ["clone-repo-aarch64"]
     taskRef:
+      kind: Task
       name: npm-install
+      apiVersion: tekton.dev/v1beta1
     params:
     - name: context-dir
       value: $(params.context-dir)
@@ -84,7 +90,9 @@ spec:
   - name: build-x86-64
     runAfter: ["npm-install-x86-64"]
     taskRef:
+      kind: Task
       name: buildah-build
+      apiVersion: tekton.dev/v1beta1
     params:
     - name: context-dir
       value: $(params.context-dir)
@@ -100,7 +108,9 @@ spec:
   - name: build-aarch64
     runAfter: ["npm-install-aarch64"]
     taskRef:
+      kind: Task
       name: buildah-build
+      apiVersion: tekton.dev/v1beta1
     params:
     - name: context-dir
       value: $(params.context-dir)
@@ -116,7 +126,9 @@ spec:
   - name: push-image
     runAfter: ["build-x86-64", "build-aarch64"]
     taskRef:
+      kind: Task
       name: buildah-push
+      apiVersion: tekton.dev/v1beta1
     params:
     - name: image-name
       value: $(params.image-name)
